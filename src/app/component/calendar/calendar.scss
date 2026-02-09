@@ -1,0 +1,131 @@
+.calendar-wrapper {
+  width: 100%;
+  max-width: 720px;
+  margin: 16px auto;
+  padding: 12px;
+  border-radius: 8px;
+  background: white;
+  box-sizing: border-box;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px;
+
+  .current-month {
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.weekday-label {
+  text-align: center;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 6px 0;
+}
+
+.day-cell {
+  min-height: 72px;
+  border-radius: 6px;
+  padding: 6px;
+  position: relative;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.12s ease;
+  box-sizing: border-box;
+  border: 1px solid #e0e0e0;
+
+  &.offset {
+    background: transparent;
+
+    >* {
+      opacity: .35;
+    }
+  }
+
+  &.offset &.today {
+    background: #e8f5e9;
+    outline: 2px solid rgba(76, 175, 80, 0.14);
+  }
+
+  &.weekend {
+    background: #ffebee; // đỏ nhạt (Material Red 50)
+    color: #c62828;
+  }
+
+  .solar-num {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    margin-left: 4px;
+  }
+
+  .lunar-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .lunar-num {
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    ::ng-deep .mat-badge {
+      .mat-badge-content, .mat-badge-active{
+        top: calc(50% + 2px);
+        bottom: unset;
+        left: 12px;
+      }
+    }
+
+    .new-month {
+      color: #1565c0;
+      font-weight: 700;
+    }
+  }
+}
+
+.day-cell:hover {
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .calendar-wrapper {
+    padding: 8px;
+  }
+
+  .calendar-grid {
+    gap: 4px;
+  }
+
+  .day-cell {
+    min-height: 56px;
+
+    .solar-num {
+      font-size: 12px;
+    }
+
+    .lunar-num {
+      font-size: 11px;
+    }
+  }
+}

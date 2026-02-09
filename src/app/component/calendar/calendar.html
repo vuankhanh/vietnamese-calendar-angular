@@ -1,0 +1,32 @@
+<div class="calendar-wrapper mat-elevation-z4">
+  <div class="calendar-header">
+    <button mat-icon-button (click)="nav(-1)"><mat-icon>chevron_left</mat-icon></button>
+    <div class="current-month">
+      Tháng {{ viewDate.getMonth() + 1 }} - {{ viewDate.getFullYear() }}
+    </div>
+    <button mat-icon-button (click)="nav(1)"><mat-icon>chevron_right</mat-icon></button>
+    <button mat-stroked-button color="primary" style="margin-left: 12px;" (click)="gotoCurrentMonth()">
+      Tháng hiện tại
+    </button>
+  </div>
+
+  <div class="calendar-grid">
+    @for (day of weekdays; track $index) {
+    <div class="weekday-label">{{ day }}</div>
+    }
+
+    @for (d of days; track $index) {
+    <div class="day-cell" [class.today]="d.isToday" [class.weekend]="d.isWeekend" [class.offset]="d.isOffset">
+
+      <div class="solar-num">{{ d.solarDay }}</div>
+      @if (d.date) {
+      <div class="lunar-info">
+        <span [matBadge]="d.events.length" matBadgeSize="large" [matBadgeHidden]="!d.events.length"></span>
+        <span class="lunar-num" [class.new-month]="d.lunarDay === 1">
+          {{ d.lunarDay === 1 ? (d.lunarDay + '/' + d.lunarMonth) : d.lunarDay }}
+        </span>
+      </div>
+      }
+    </div>
+    }
+  </div>
