@@ -3,38 +3,32 @@ import { MaterialModule } from '../../shared/module/material';
 import { getLunarDate, LunarDate } from '@dqcai/vn-lunar';
 import { IDayInfo } from '../../shared/interface/day.interface';
 import { IEvent } from '../../shared/interface/event.interface';
+import { Events } from '../events/events';
+import { LUNAR_EVENTS, SOLAR_EVENTS } from '../../shared/constant/event.constant';
 
 @Component({
   selector: 'app-calendar',
   imports: [
+    Events,
+
     MaterialModule
   ],
   templateUrl: './calendar.html',
   styleUrls: ['./calendar.scss'],
 })
 export class Calendar implements OnInit {
-  viewDate = new Date();
+  private readonly newDate = new Date();
+  viewDate = this.newDate;
   days: IDayInfo[] = [];
   readonly weekdays = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
-  private readonly solarEvents: IEvent[] = [
-    { title: 'Tết Dương Lịch', day: 1, month: 1 },
-    { title: 'Valentine', day: 14, month: 2 },
-    { title: 'Valentine', day: 14, month: 2 },
-    { title: 'Quốc tế Phụ nữ', day: 8, month: 3 },
-    { title: 'Ngày Giải phóng miền Nam', day: 30, month: 4 },
-    { title: 'Ngày Quốc tế Lao Động', day: 1, month: 5 },
-    { title: 'Ngày Quốc khánh', day: 2, month: 9 },
-  ];
 
-  private readonly lunarEvents: IEvent[] = [
-    { title: 'Tết Nguyên Đán', day: 1, month: 1 },
-    { title: 'Tết Nguyên Đán (H+1)', day: 2, month: 1 },
-    { title: 'Tết Nguyên Đán (H+2)', day: 3, month: 1 },
-    { title: 'Giỗ Tổ Hùng Vương', day: 10, month: 3 },
-    { title: 'Tết Trung Thu', day: 15, month: 8 },
-  ];
+  private readonly solarEvents: IEvent[] = SOLAR_EVENTS;
+  private readonly lunarEvents: IEvent[] = LUNAR_EVENTS;
+  readonly allEvents: IEvent[] = [...SOLAR_EVENTS, ...LUNAR_EVENTS];
 
   private lunarCache = new Map<string, { day: number; month: number; isLeap: boolean }>();
+
+  showGoToCurrentMonthButton = false;
 
   ngOnInit() {
     this.renderCalendar();
@@ -115,10 +109,16 @@ export class Calendar implements OnInit {
       const weekday = d.getDay(); // 0 = CN
       const isWeekend = weekday === 0;
 
-      const events: string[] = [];
+      const events: {title: string, isLunar: boolean}[] = [];
       this.solarEvents.forEach(event => {
         if (event.day === i && event.month === month + 1) {
-          events.push(event.title);
+          events.push({title: event.title, isLunar: false});
+        }
+      });
+
+      this.lunarEvents.forEach(event => {
+        if (event.day === lunar.day && event.month === lunar.month) {
+          events.push({title: event.title, isLunar: true});
         }
       });
       this.days.push({
@@ -165,6 +165,11 @@ export class Calendar implements OnInit {
   nav(offset: number) {
     this.viewDate = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() + offset, 1);
     this.renderCalendar();
+    if(this.viewDate.getFullYear() === this.newDate.getFullYear() && this.viewDate.getMonth() === this.newDate.getMonth()) {
+      this.showGoToCurrentMonthButton = false;
+    } else {
+      this.showGoToCurrentMonthButton = true;
+    }
   }
 
   gotoCurrentMonth() {

@@ -8,5 +8,5 @@ export interface IDayInfo {
   isLeap: boolean;
   isToday: boolean;
   isWeekend: boolean;
-  events: string[];
+  events: {title: string, isLunar: boolean}[];
 }

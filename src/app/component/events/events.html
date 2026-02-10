@@ -1,0 +1,18 @@
+<div class="container">
+  <mat-list>
+    @for (event of eventsWithDate; track $index) {
+    <mat-list-item [class.is-passed]="event.isPassed">
+      <div matListItemTitle>
+        <strong>{{ event.title }}</strong>
+      </div>
+      <div matListItemLine>
+        <div class="date-info">
+          <span>Dương lịch: {{ event.solarDay | zeroPrefix }}/{{ event.solarMonth | zeroPrefix }}</span>
+          <span>Âm lịch: {{ event.lunarDay | zeroPrefix }}/{{ event.lunarMonth | zeroPrefix }}</span>
+        </div>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    }
+  </mat-list>
+</div>

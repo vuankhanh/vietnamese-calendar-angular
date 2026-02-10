@@ -1,0 +1,22 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  mat-list{
+    height: 100%;
+    min-width: 300px;
+    overflow: auto;
+    mat-list-item{
+      height: auto;
+      .date-info{
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .is-passed{
+      opacity: .35;
+    }
+  }
+}
