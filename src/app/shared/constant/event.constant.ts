@@ -6,6 +6,14 @@ export const SOLAR_EVENTS: IEvent[] = [
   { title: 'Quốc tế Phụ nữ', day: 8, month: 3, isLunar: false, isNoticeable: false },
   { title: 'Ngày Giải phóng miền Nam', day: 30, month: 4, isLunar: false, isNoticeable: false },
   { title: 'Ngày Quốc tế Lao Động', day: 1, month: 5, isLunar: false, isNoticeable: false },
+  { title: 'Tết Dương Lịch', day: 1, month: 1, isLunar: false, isNoticeable: false, description:' asdasdsadas' },
+  { title: 'Tết Dương Lịch', day: 2, month: 1, isLunar: false, isNoticeable: false, description:' asdasdsadas' },
+  { title: 'Tết Dương Lịch', day: 20, month: 1, isLunar: false, isNoticeable: false, description:' asdasdsadas' },
+  { title: 'Tết Dương Lịch', day: 6, month: 1, isLunar: false, isNoticeable: false, description:' asdasdsadas' },
+  { title: 'Tết Dương Lịch', day: 21, month: 1, isLunar: false, isNoticeable: false, description:' asdasdsadas' },
+  { title: 'Tết Dương Lịch', day: 9, month: 1, isLunar: false, isNoticeable: false, description:' asdasdsadas' },
+  { title: 'Tết Dương Lịch', day: 20, month: 1, isLunar: false, isNoticeable: false, description:' asdasdsadas' },
+  { title: 'Tết Dương Lịch', day: 5, month: 1, isLunar: false, isNoticeable: false, description:' asdasdsadas' },
   { title: 'Ngày Quốc khánh', day: 2, month: 9, isLunar: false, isNoticeable: false },
 ];
 
@@ -14,5 +22,6 @@ export const LUNAR_EVENTS: IEvent[] = [
   { title: 'Tết Nguyên Đán (H+1)', day: 2, month: 1, isLunar: true, isNoticeable: false },
   { title: 'Tết Nguyên Đán (H+2)', day: 3, month: 1, isLunar: true, isNoticeable: false },
   { title: 'Giỗ Tổ Hùng Vương', day: 10, month: 3, isLunar: true, isNoticeable: false },
+  { title: 'Thử nghiệm tháng nhuận', day: 15, month: 5, isLunar: true, isNoticeable: false },
   { title: 'Tết Trung Thu', day: 15, month: 8, isLunar: true, isNoticeable: false },
 ];

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { MaterialModule } from '../../shared/module/material';
 import { getLunarDate, LunarDate } from '@dqcai/vn-lunar';
 import { IDayInfo } from '../../shared/interface/day.interface';
@@ -17,6 +17,8 @@ import { LUNAR_EVENTS, SOLAR_EVENTS } from '../../shared/constant/event.constant
   styleUrls: ['./calendar.scss'],
 })
 export class Calendar implements OnInit {
+  @Input() tabGroupIndex: number = 0;
+
   private readonly newDate = new Date();
   viewDate = this.newDate;
   days: IDayInfo[] = [];
@@ -117,7 +119,7 @@ export class Calendar implements OnInit {
       });
 
       this.lunarEvents.forEach(event => {
-        if (event.day === lunar.day && event.month === lunar.month) {
+        if (event.day === lunar.day && event.month === lunar.month && !lunar.isLeap) {
           events.push({title: event.title, isLunar: true});
         }
       });
@@ -175,5 +177,6 @@ export class Calendar implements OnInit {
   gotoCurrentMonth() {
     this.viewDate = new Date();
     this.renderCalendar();
+    this.showGoToCurrentMonthButton = false;
   }
 }

@@ -32,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [CommonModule],
@@ -68,7 +69,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSelectModule,
     MatExpansionModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule { }

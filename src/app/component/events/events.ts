@@ -1,8 +1,9 @@
-import { Component, computed, Input, OnInit, signal } from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, Input, OnChanges, OnInit, QueryList, signal, SimpleChange, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import { IEvent, IEventWithDate } from '../../shared/interface/event.interface';
 import { MaterialModule } from '../../shared/module/material';
 import { ZeroPrefixPipe } from '../../shared/pipe/zero-prefix-pipe';
 import { getLunarDate, getSolarDate } from '@dqcai/vn-lunar';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-events',
@@ -14,12 +15,41 @@ import { getLunarDate, getSolarDate } from '@dqcai/vn-lunar';
   templateUrl: './events.html',
   styleUrl: './events.scss',
 })
-export class Events implements OnInit {
+export class Events implements OnChanges, OnInit, AfterViewInit {
+  @Input() tabGroupIndex: number = 0;
   @Input() events: IEvent[] = [];
 
+  @ViewChildren('eventItem', { read: ElementRef }) eventItems?: QueryList<ElementRef>;
+
   eventsWithDate: IEventWithDate[] = [];
+  private fisrtNotPassedEventIndex: ElementRef<any> | undefined;
+
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    const tabGroupIndexChange: SimpleChange | undefined = simpleChanges['tabGroupIndex'];
+    const tabGroupIndexCurrentValue: number = tabGroupIndexChange?.currentValue;
+    const tabGroupIndexPreviousValue: number = tabGroupIndexChange?.previousValue;
+    
+    if (tabGroupIndexPreviousValue != undefined && tabGroupIndexCurrentValue === 0 && tabGroupIndexPreviousValue !== tabGroupIndexCurrentValue) {
+      setTimeout(() => {
+        if (this.fisrtNotPassedEventIndex) {
+          this.fisrtNotPassedEventIndex.nativeElement.scrollIntoView({ behavior: 'instant', block: 'center' });
+        }
+      }, 150);
+    }
+
+  }
+
   ngOnInit(): void {
     this.mapEventsToWithDate();
+  }
+
+  ngAfterViewInit(): void {
+    //Lấy ra vị trí của event có isPassed = false đầu tiên
+    const firstNotPassedEvent = this.eventsWithDate.findIndex(event => !event.isPassed);
+    this.fisrtNotPassedEventIndex = this.eventItems?.toArray()[firstNotPassedEvent];
+    if (this.fisrtNotPassedEventIndex) {
+      this.fisrtNotPassedEventIndex.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
 
   private mapEventsToWithDate() {
@@ -28,7 +58,7 @@ export class Events implements OnInit {
       const currentYear = newDate.getFullYear();
 
       let lunarDay: number, lunarMonth: number, solarDay: number, solarMonth: number, date: Date, isPassed: boolean;
-      if(event.isLunar) {
+      if (event.isLunar) {
         lunarDay = event.day;
         lunarMonth = event.month;
         const solarDate = getSolarDate(lunarDay, lunarMonth, currentYear);

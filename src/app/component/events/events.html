@@ -1,8 +1,8 @@
 <div class="container">
   <mat-list>
     @for (event of eventsWithDate; track $index) {
-    <mat-list-item [class.is-passed]="event.isPassed">
-      <div matListItemTitle>
+    <mat-list-item [class.is-passed]="event.isPassed" #eventItem>
+      <div matListItemTitle [ngClass]="event.isLunar ? 'isLunarEvent' : 'isSolarEvent'">
         <strong>{{ event.title }}</strong>
       </div>
       <div matListItemLine>

@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<div class="container">
+  <mat-tab-group (selectedIndexChange)="onSelectedIndexChange($event)">
+    <mat-tab label="Sự kiện và Lịch">
+      <app-calendar [tabGroupIndex]="tabSelectedIndex()"></app-calendar>
+    </mat-tab>
+    <mat-tab label="Quy tắc">
+      <app-rule></app-rule>
+    </mat-tab>
+  </mat-tab-group>
+</div>

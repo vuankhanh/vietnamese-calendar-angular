@@ -1,11 +1,14 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { MaterialModule } from './shared/module/material';
+import { Calendar } from './component/calendar/calendar';
+import { Rule } from './component/rule/rule';
 
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet,
+    Calendar,
+    Rule,
+
     MaterialModule
   ],
   templateUrl: './app.html',
@@ -13,4 +16,9 @@ import { MaterialModule } from './shared/module/material';
 })
 export class App {
   protected readonly title = signal('vietnamese-calendar-angular');
+
+  readonly tabSelectedIndex = signal(0);
+  onSelectedIndexChange(index: number){
+    this.tabSelectedIndex.set(index);
+  }
 }

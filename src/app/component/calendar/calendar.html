@@ -1,29 +1,29 @@
 <div class="container">
   <div class="events-wrapper">
-    <app-events [events]="allEvents"></app-events>
+    <app-events [tabGroupIndex]="tabGroupIndex" [events]="allEvents"></app-events>
   </div>
   <div class="calendar-wrapper">
     <div class="calendar-header">
       <button mat-icon-button (click)="nav(-1)"><mat-icon>chevron_left</mat-icon></button>
       <div class="current-month">
         Tháng {{ viewDate.getMonth() + 1 }} - {{ viewDate.getFullYear() }}
-      </div>
-      <button mat-icon-button (click)="nav(1)"><mat-icon>chevron_right</mat-icon></button>
-      @if (showGoToCurrentMonthButton) {
+        @if (showGoToCurrentMonthButton) {
         <button mat-stroked-button color="primary" style="margin-left: 12px;" (click)="gotoCurrentMonth()">
           Tháng hiện tại
         </button>
-      }
+        }
+      </div>
+      <button mat-icon-button (click)="nav(1)"><mat-icon>chevron_right</mat-icon></button>
     </div>
-  
+
     <div class="calendar-grid">
       @for (day of weekdays; track $index) {
       <div class="weekday-label">{{ day }}</div>
       }
-  
+
       @for (d of days; track $index) {
       <div class="day-cell" [class.today]="d.isToday" [class.weekend]="d.isWeekend" [class.offset]="d.isOffset">
-  
+
         <div class="solar-num">{{ d.solarDay }}</div>
         @if (d.date) {
         <div class="lunar-info">
