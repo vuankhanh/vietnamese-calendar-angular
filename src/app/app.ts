@@ -15,8 +15,6 @@ import { Rule } from './component/rule/rule';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('vietnamese-calendar-angular');
-
   readonly tabSelectedIndex = signal(0);
   onSelectedIndexChange(index: number){
     this.tabSelectedIndex.set(index);
