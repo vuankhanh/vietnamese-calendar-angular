@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, computed, ElementRef, Input, OnChanges, OnInit, QueryList, signal, SimpleChange, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, QueryList, SimpleChange, SimpleChanges, ViewChildren } from '@angular/core';
 import { IEvent, IEventWithDate } from '../../shared/interface/event.interface';
 import { MaterialModule } from '../../shared/module/material';
 import { ZeroPrefixPipe } from '../../shared/pipe/zero-prefix-pipe';
 import { getLunarDate, getSolarDate } from '@dqcai/vn-lunar';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-events',
@@ -61,7 +60,7 @@ export class Events implements OnChanges, OnInit, AfterViewInit {
       if (event.isLunar) {
         lunarDay = event.day;
         lunarMonth = event.month;
-        const solarDate = getSolarDate(lunarDay, lunarMonth, currentYear);
+        const solarDate = getSolarDate(lunarDay, lunarMonth, currentYear+(event.offsetYear ?? 0));
         solarDay = solarDate.day;
         solarMonth = solarDate.month;
         date = new Date(currentYear, solarMonth - 1, solarDay);
@@ -69,7 +68,7 @@ export class Events implements OnChanges, OnInit, AfterViewInit {
       } else {
         solarDay = event.day;
         solarMonth = event.month;
-        const lunarDate = getLunarDate(solarDay, solarMonth, currentYear);
+        const lunarDate = getLunarDate(solarDay, solarMonth, currentYear+(event.offsetYear ?? 0));
         lunarDay = lunarDate.day;
         lunarMonth = lunarDate.month;
         date = new Date(currentYear, solarMonth - 1, solarDay);

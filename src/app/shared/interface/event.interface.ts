@@ -5,6 +5,7 @@ export interface IEvent {
   description?: string;
   isLunar: boolean;
   isNoticeable: boolean;
+  offsetYear?: number;
 }
 
 export interface IEventWithDate extends IEvent {

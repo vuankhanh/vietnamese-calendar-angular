@@ -3,7 +3,13 @@
     @for (event of eventsWithDate; track $index) {
     <mat-list-item [class.is-passed]="event.isPassed" #eventItem>
       <div matListItemTitle [ngClass]="event.isLunar ? 'isLunarEvent' : 'isSolarEvent'">
-        <strong>{{ event.title }}</strong>
+        <strong>
+          {{ event.title }}
+        </strong>
+        @if (event.isNoticeable) {
+        <mat-icon>notifications</mat-icon>
+        }
+
       </div>
       <div matListItemLine>
         <div class="date-info">

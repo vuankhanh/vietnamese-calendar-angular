@@ -1,10 +1,11 @@
-import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, OnChanges, OnDestroy, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { MaterialModule } from '../../shared/module/material';
 import { getLunarDate, LunarDate } from '@dqcai/vn-lunar';
 import { IDayInfo } from '../../shared/interface/day.interface';
 import { IEvent } from '../../shared/interface/event.interface';
 import { Events } from '../events/events';
-import { LUNAR_EVENTS, SOLAR_EVENTS } from '../../shared/constant/event.constant';
+import { EventDataService } from '../../shared/service/event-data.service';
+import { combineLatest, map, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-calendar',
@@ -16,24 +17,32 @@ import { LUNAR_EVENTS, SOLAR_EVENTS } from '../../shared/constant/event.constant
   templateUrl: './calendar.html',
   styleUrls: ['./calendar.scss'],
 })
-export class Calendar implements OnInit {
+export class Calendar implements OnInit, OnDestroy {
   @Input() tabGroupIndex: number = 0;
+
+  private readonly eventDataService = inject(EventDataService);
 
   private readonly newDate = new Date();
   viewDate = this.newDate;
   days: IDayInfo[] = [];
   readonly weekdays = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
 
-  private readonly solarEvents: IEvent[] = SOLAR_EVENTS;
-  private readonly lunarEvents: IEvent[] = LUNAR_EVENTS;
-  readonly allEvents: IEvent[] = [...SOLAR_EVENTS, ...LUNAR_EVENTS];
+  private solarEvents: IEvent[] = [];
+  private lunarEvents: IEvent[] = [];
+  allEvents: IEvent[] = [];
 
   private lunarCache = new Map<string, { day: number; month: number; isLeap: boolean }>();
 
   showGoToCurrentMonthButton = false;
 
+  private readonly subscription = new Subscription();
   ngOnInit() {
-    this.renderCalendar();
+    combineLatest([this.eventDataService.getSolarEvents(), this.eventDataService.getLunarEvents()]).subscribe(([solarEvents, lunarEvents]) => {
+      this.solarEvents = solarEvents;
+      this.lunarEvents = lunarEvents;
+      this.allEvents = [...solarEvents, ...lunarEvents];
+      this.renderCalendar();
+    });
   }
 
   private normalizeLunarRaw(raw: LunarDate | null) {
@@ -135,7 +144,6 @@ export class Calendar implements OnInit {
         events
       });
     }
-    console.log(this.days);
 
     // Sau khi đã push hết các ngày trong tháng hiện tại
     const totalCells = this.days.length;
@@ -178,5 +186,9 @@ export class Calendar implements OnInit {
     this.viewDate = new Date();
     this.renderCalendar();
     this.showGoToCurrentMonthButton = false;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

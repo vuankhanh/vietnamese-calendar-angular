@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Rằm tháng Giêng",
+    "day": 15,
+    "month": 1,
+    "isLunar": true,
+    "isNoticeable": false,
+    "description": "Ngày lễ cúng rằm đầu tiên của năm, thường đi chùa cầu an."
+  },
+  {
+    "title": "Tết Hàn Thực",
+    "day": 3,
+    "month": 3,
+    "isLunar": true,
+    "isNoticeable": false,
+    "description": "Ăn bánh trôi, bánh chay để tưởng nhớ người thân."
+  },
+  {
+    "title": "Giỗ Tổ Hùng Vương",
+    "day": 10,
+    "month": 3,
+    "isLunar": true,
+    "isNoticeable": false,
+    "description": "Lễ giỗ tổ của dân tộc Việt Nam, tưởng nhớ các vua Hùng."
+  },
+  {
+    "title": "Lễ Phật Đản",
+    "day": 15,
+    "month": 4,
+    "isLunar": true,
+    "isNoticeable": false,
+    "description": "Kỷ niệm ngày sinh của Đức Phật Thích Ca Mâu Ni."
+  },
+  {
+    "title": "Rằm tháng Bảy (Lễ Vu Lan)",
+    "day": 15,
+    "month": 7,
+    "isLunar": true,
+    "isNoticeable": false,
+    "description": "Ngày lễ báo hiếu cha mẹ và tổ tiên."
+  },
+  {
+    "title": "Tết Đoan Ngọ",
+    "day": 5,
+    "month": 5,
+    "isLunar": true,
+    "isNoticeable": false,
+    "description": "Ngày lễ diệt trừ sâu bọ và bệnh tật."
+  },
+  {
+    "title": "Tết Trung Thu",
+    "day": 15,
+    "month": 8,
+    "isLunar": true,
+    "isNoticeable": false,
+    "description": "Lễ hội dành cho trẻ em với bánh trung thu và múa lân."
+  },
+  {
+    "title": "Tết Táo Quân",
+    "day": 23,
+    "month": 12,
+    "isLunar": true,
+    "isNoticeable": false,
+    "description": "Ngày tiễn ông Công, ông Táo về trời báo cáo."
+  },
+  {
+    "title": "Giỗ cụ bà An Thị Vinh",
+    "day": 24,
+    "month": 2,
+    "isLunar": true,
+    "isNoticeable": true,
+    "description": ""
+  },
+  {
+    "title": "Giỗ cụ ông Urashima",
+    "day": 2,
+    "month": 1,
+    "isLunar": true,
+    "isNoticeable": true,
+    "description": ""
+  },
+  {
+    "title": "Giỗ bà Nguyễn Thị Láng",
+    "day": 11,
+    "month": 4,
+    "isLunar": true,
+    "isNoticeable": true,
+    "description": ""
+  },
+  {
+    "title": "Giỗ ông An Huy",
+    "day": 9,
+    "month": 12,
+    "isLunar": true,
+    "isNoticeable": true,
+    "description": ""
+  }
+]

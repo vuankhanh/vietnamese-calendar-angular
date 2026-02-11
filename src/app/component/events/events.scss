@@ -1,28 +1,45 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
 
-  mat-list{
+  mat-list {
     height: 100%;
-    min-width: 300px;
     overflow: auto;
-    mat-list-item{
+
+    mat-list-item {
       height: auto;
-      .date-info{
+      padding: 10px 16px;
+
+      .date-info {
         display: flex;
         justify-content: space-between;
       }
     }
-    .isSolarEvent{
+
+    .isSolarEvent {
       color: #1976d2;
     }
-    .isLunarEvent{
+
+    .isLunarEvent {
       color: #d32f2f;
     }
-    .is-passed{
+
+    .is-passed {
       opacity: .35;
+    }
+
+    div[matListItemTitle] {
+      display: flex;
+      align-items: center;
+
+    }
+
+    ::ng-deep [matListItemTitle]::before,
+    ::ng-deep [matListItemTitle]::after {
+      display: none !important;
+      content: none !important;
     }
   }
 }

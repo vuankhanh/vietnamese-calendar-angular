@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Tết Dương Lịch",
+    "day": 1,
+    "month": 1,
+    "isLunar": false,
+    "isNoticeable": false,
+    "description": "Ngày đầu tiên của năm mới theo lịch Dương."
+  },
+  {
+    "title": "Quốc tế Phụ nữ",
+    "day": 8,
+    "month": 3,
+    "isLunar": false,
+    "isNoticeable": false,
+    "description": "Ngày tôn vinh phụ nữ trên toàn thế giới."
+  },
+  {
+    "title": "Ngày Giải phóng miền Nam",
+    "day": 30,
+    "month": 4,
+    "isLunar": false,
+    "isNoticeable": false,
+    "description": "Kỷ niệm ngày miền Nam Việt Nam được giải phóng, thống nhất đất nước."
+  },
+  {
+    "title": "Ngày Quốc tế Lao Động",
+    "day": 1,
+    "month": 5,
+    "isLunar": false,
+    "isNoticeable": false,
+    "description": "Ngày tôn vinh người lao động trên toàn thế giới."
+  },
+  {
+    "title": "Ngày Quốc khánh Việt Nam",
+    "day": 2,
+    "month": 9,
+    "isLunar": false,
+    "isNoticeable": false,
+    "description": "Kỷ niệm ngày thành lập nước Cộng hòa Xã hội Chủ nghĩa Việt Nam."
+  }
+]
