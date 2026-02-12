@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, QueryList, SimpleChange, SimpleChanges, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChange, SimpleChanges, ViewChildren } from '@angular/core';
 import { IEvent, IEventWithDate } from '../../shared/interface/event.interface';
 import { MaterialModule } from '../../shared/module/material';
 import { ZeroPrefixPipe } from '../../shared/pipe/zero-prefix-pipe';
@@ -17,6 +17,8 @@ import { getLunarDate, getSolarDate } from '@dqcai/vn-lunar';
 export class Events implements OnChanges, OnInit, AfterViewInit {
   @Input() tabGroupIndex: number = 0;
   @Input() events: IEvent[] = [];
+
+  @Output() eventSelected = new EventEmitter<IEventWithDate>();
 
   @ViewChildren('eventItem', { read: ElementRef }) eventItems?: QueryList<ElementRef>;
 
@@ -87,5 +89,9 @@ export class Events implements OnChanges, OnInit, AfterViewInit {
     });
 
     this.eventsWithDate = this.eventsWithDate.sort((a, b) => a.date.getTime() - b.date.getTime());
+  }
+
+  goToEventCalendar(event: IEventWithDate) {
+    this.eventSelected.emit(event);
   }
 }

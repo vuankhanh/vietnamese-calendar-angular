@@ -64,35 +64,35 @@
     "description": "Ngày tiễn ông Công, ông Táo về trời báo cáo."
   },
   {
-    "title": "Giỗ cụ bà An Thị Vinh",
+    "title": "Giỗ tổ mẫu An Thị Vinh",
     "day": 24,
     "month": 2,
     "isLunar": true,
     "isNoticeable": true,
-    "description": ""
+    "description": "Giỗ tổ mẫu An Thị Vinh"
   },
   {
-    "title": "Giỗ cụ ông Urashima",
+    "title": "Giỗ tổ phụ Shigeru Urashima",
     "day": 2,
     "month": 1,
     "isLunar": true,
     "isNoticeable": true,
-    "description": ""
+    "description": "Giỗ tổ phụ Shigeru Urashima"
   },
   {
-    "title": "Giỗ bà Nguyễn Thị Láng",
+    "title": "Giỗ cụ bà Nguyễn Thị Láng",
     "day": 11,
     "month": 4,
     "isLunar": true,
     "isNoticeable": true,
-    "description": ""
+    "description": "Giỗ cụ bà Nguyễn Thị Láng"
   },
   {
-    "title": "Giỗ ông An Huy",
+    "title": "Giỗ cụ ông An Huy",
     "day": 9,
     "month": 12,
     "isLunar": true,
     "isNoticeable": true,
-    "description": ""
+    "description": "Giỗ cụ ông An Huy"
   }
 ]

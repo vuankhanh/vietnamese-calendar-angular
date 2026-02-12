@@ -18,6 +18,11 @@
       }
     }
 
+    mat-list-item:hover {
+      background-color: #f5f5f5;
+      cursor: pointer;
+    }
+
     .isSolarEvent {
       color: #1976d2;
     }

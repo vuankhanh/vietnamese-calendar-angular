@@ -2,7 +2,7 @@ import { Component, inject, Input, OnChanges, OnDestroy, OnInit, SimpleChange, S
 import { MaterialModule } from '../../shared/module/material';
 import { getLunarDate, LunarDate } from '@dqcai/vn-lunar';
 import { IDayInfo } from '../../shared/interface/day.interface';
-import { IEvent } from '../../shared/interface/event.interface';
+import { IEvent, IEventWithDate } from '../../shared/interface/event.interface';
 import { Events } from '../events/events';
 import { EventDataService } from '../../shared/service/event-data.service';
 import { combineLatest, map, Subscription } from 'rxjs';
@@ -43,6 +43,23 @@ export class Calendar implements OnInit, OnDestroy {
       this.allEvents = [...solarEvents, ...lunarEvents];
       this.renderCalendar();
     });
+  }
+
+  onEventSelected(event: IEventWithDate) {
+    this.viewDate = new Date(this.viewDate.getFullYear(), event.date.getMonth(), 1);
+    this.renderAndCheckCurrentMonth();
+    setTimeout(() => {
+      document.querySelectorAll('.day-cell').forEach(el => {
+        if (el.classList.contains('offset')) return;
+        const firstChild = el.firstChild as HTMLDivElement;
+        if (firstChild.textContent === event.date.getDate().toString()) {
+          el.classList.add('blink');
+          setTimeout(() => {
+            el.classList.remove('blink');
+          }, 1000);
+        }
+      });
+    }, 150);
   }
 
   private normalizeLunarRaw(raw: LunarDate | null) {
@@ -98,7 +115,7 @@ export class Calendar implements OnInit, OnDestroy {
       const lunar = this.getLunarFor(d);
       const weekday = d.getDay();
       const isWeekend = weekday === 0;
-      
+
       this.days.push({
         date: d,
         solarDay: dayNum,
@@ -120,16 +137,16 @@ export class Calendar implements OnInit, OnDestroy {
       const weekday = d.getDay(); // 0 = CN
       const isWeekend = weekday === 0;
 
-      const events: {title: string, isLunar: boolean}[] = [];
+      const events: { title: string, isLunar: boolean }[] = [];
       this.solarEvents.forEach(event => {
         if (event.day === i && event.month === month + 1) {
-          events.push({title: event.title, isLunar: false});
+          events.push({ title: event.title, isLunar: false });
         }
       });
 
       this.lunarEvents.forEach(event => {
         if (event.day === lunar.day && event.month === lunar.month && !lunar.isLeap) {
-          events.push({title: event.title, isLunar: true});
+          events.push({ title: event.title, isLunar: true });
         }
       });
       this.days.push({
@@ -174,8 +191,12 @@ export class Calendar implements OnInit, OnDestroy {
 
   nav(offset: number) {
     this.viewDate = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() + offset, 1);
+    this.renderAndCheckCurrentMonth();
+  }
+
+  private renderAndCheckCurrentMonth() {
     this.renderCalendar();
-    if(this.viewDate.getFullYear() === this.newDate.getFullYear() && this.viewDate.getMonth() === this.newDate.getMonth()) {
+    if (this.viewDate.getFullYear() === this.newDate.getFullYear() && this.viewDate.getMonth() === this.newDate.getMonth()) {
       this.showGoToCurrentMonthButton = false;
     } else {
       this.showGoToCurrentMonthButton = true;

@@ -120,6 +120,15 @@
   cursor: pointer;
 }
 
+.blink {
+  animation: blink-effect 0.5s linear 4; // 0.5s x 4 = 2s
+}
+
+@keyframes blink-effect {
+  0%, 100% { background: inherit; }
+  50% { background: yellow; }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .container{
