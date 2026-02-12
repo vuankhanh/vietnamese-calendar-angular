@@ -54,10 +54,9 @@ export class Events implements OnChanges, OnInit, AfterViewInit {
   }
 
   private mapEventsToWithDate() {
+    const newDate = new Date();
+    const currentYear = newDate.getFullYear();
     this.eventsWithDate = this.events.map(event => {
-      const newDate = new Date();
-      const currentYear = newDate.getFullYear();
-
       let lunarDay: number, lunarMonth: number, solarDay: number, solarMonth: number, date: Date, isPassed: boolean;
       if (event.isLunar) {
         lunarDay = event.day;
