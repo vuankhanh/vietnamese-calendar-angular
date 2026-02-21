@@ -1,10 +1,15 @@
 <div class="container">
-  <mat-tab-group (selectedIndexChange)="onSelectedIndexChange($event)">
+  <mat-tab-group (selectedIndexChange)="onSelectedIndexChange($event)"
+  [selectedIndex]="tabSelectedIndex()"
+  >
     <mat-tab label="Sự kiện và Lịch">
       <app-calendar [tabGroupIndex]="tabSelectedIndex()"></app-calendar>
     </mat-tab>
     <mat-tab label="Quy tắc">
       <app-rule></app-rule>
+    </mat-tab>
+    <mat-tab label="Album">
+      <app-album></app-album>
     </mat-tab>
   </mat-tab-group>
 </div>

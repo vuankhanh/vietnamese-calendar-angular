@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1,
+    "name": "Họp họ An làng Đại Quan",
+    "route": "hop-ho-an-lang-dai-quan",
+    "date": "2026-02-20:00:00:00",
+    "description": "Họp họ An làng Đại Quan là một sự kiện truyền thống quan trọng của cộng đồng họ An tại làng Đại Quan. Đây là dịp để các thành viên trong họ tụ họp, giao lưu và thắt chặt tình cảm gia đình. Trong buổi họp, các thành viên sẽ cùng nhau chia sẻ những câu chuyện về lịch sử gia đình, truyền thống và những kỷ niệm đáng nhớ. Ngoài ra, họ cũng sẽ tổ chức các hoạt động vui chơi, trò chơi dân gian và thưởng thức những món ăn truyền thống đặc sắc của làng Đại Quan. Họp họ An là một dịp để mọi người gắn kết và duy trì sự đoàn kết trong cộng đồng họ An.",
+    "medias": [
+      {
+        "id": 1,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/1.jpg"
+      },
+      {
+        "id": 2,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/2.jpg"
+      },
+      {
+        "id": 3,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/3.jpg"
+      },
+      {
+        "id": 4,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/4.jpg"
+      },
+      {
+        "id": 5,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/5.jpg"
+      },
+      {
+        "id": 6,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/6.jpg"
+      },
+      {
+        "id": 7,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/7.jpg"
+      },
+      {
+        "id": 8,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/8.jpg"
+      },
+      {
+        "id": 9,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/9.jpg"
+      },
+      {
+        "id": 10,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/10.jpg"
+      },
+      {
+        "id": 11,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/11.jpg"
+      },
+      {
+        "id": 12,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/12.jpg"
+      },
+      {
+        "id": 13,
+        "type": "image/jpg",
+        "url": "./media/nha-tho-ho-an/13.jpg"
+      },
+      {
+        "id": 14,
+        "type": "video/mp4",
+        "url": "./media/nha-tho-ho-an/7548923445748.mp4"
+      }
+    ]
+  }
+]

@@ -1,0 +1,64 @@
+::ng-deep mat-dialog-container {
+  position: absolute !important;
+
+  .mat-mdc-dialog-surface {
+    border-radius: unset !important;
+  }
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  mat-toolbox {
+    display: flex;
+    gap: 15px;
+  }
+}
+
+div[mat-dialog-content] {
+  padding: 0;
+  height: 100%;
+  max-height: unset;
+  display: flex;
+}
+
+swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+swiper-slide {
+  display: flex;
+
+  .slide-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .share-button{
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    video {
+      max-width: 100%;
+    }
+
+    pinch-zoom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+}

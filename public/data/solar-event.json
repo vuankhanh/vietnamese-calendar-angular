@@ -38,5 +38,13 @@
     "isLunar": false,
     "isNoticeable": false,
     "description": "Kỷ niệm ngày thành lập nước Cộng hòa Xã hội Chủ nghĩa Việt Nam."
+  },
+  {
+    "title": "Giỗ tổ phụ Shigeru Urashima",
+    "day": 18,
+    "month": 2,
+    "isLunar": false,
+    "isNoticeable": true,
+    "description": "Giỗ tổ phụ Shigeru Urashima"
   }
 ]

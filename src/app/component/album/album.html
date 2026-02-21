@@ -1,0 +1,13 @@
+<div class="container">
+  @for (album of albums$ | async; track $index) {
+  <mat-card (click)="goToAlbum(album)" class="album-card">
+    <mat-card-header>
+      <mat-card-title>{{ album.name }}</mat-card-title>
+      <mat-card-subtitle>{{ album.date | date: 'dd/MM/yyyy' }}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="album-image-container">
+      <img mat-card-image [src]="album.medias[0].url" alt="Photo of {{ album.name }}" class="album-image">
+    </div>
+  </mat-card>
+  }
+</div>
